@@ -1,0 +1,41 @@
+<mat-toolbar color="primary">
+    <span>Details</span>
+  </mat-toolbar>
+
+  <div class="form">
+<mat-form-field  appearance="outline">
+    <mat-label>Namen</mat-label>
+    <input matInput [value]="selected.name" >
+</mat-form-field>
+
+<mat-form-field appearance="outline">
+    <mat-label>Hersteller</mat-label>
+    <input matInput [value]="selected.brand" >
+</mat-form-field>
+
+<mat-form-field appearance="outline">
+    <mat-label>Preis pro 100g</mat-label>
+    <input matInput disabled [value]="getLowPrice(selected.prices).price" >
+</mat-form-field>
+
+<mat-form-field appearance="outline">
+    <mat-label>Durch. Preis Pro 100g</mat-label>
+    <input matInput disabled [value]="(GetAveragePrice(selected.prices) | number | number : '1.2-2')" >
+</mat-form-field>
+
+<mat-form-field appearance="outline">
+    <mat-label>Shop Link</mat-label>
+    <input matInput disabled [value]="getLowPrice(selected.prices).link" >
+</mat-form-field>
+</div>
+
+<div class="title">Nährwerte: </div>
+
+<div id="chart">
+    <apx-chart
+      [series]="chartOptions.series"
+      [chart]="chartOptions.chart"
+      [labels]="chartOptions.labels"
+      [responsive]="chartOptions.responsive"
+    ></apx-chart>
+  </div>
